@@ -38,7 +38,7 @@ module Withdraws
 
     def confirmations
       return 0 if block_number.blank?
-      return latest_block_number - block_number if (latest_block_number - block_number) >= 0
+      return (latest_block_number - block_number) + 1 if (latest_block_number - block_number) >= 0
       'N/A'
     rescue Faraday::ConnectionFailed => e
       report_exception(e)
